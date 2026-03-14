@@ -1,0 +1,270 @@
+@use "../../styles/variables" as *;
+
+// ─── HERO WRAPPER ─────────────────────────────────────────────────────────────
+.hero {
+  position: relative;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 0 6rem;
+  gap: 4rem;
+  overflow: hidden;
+  background: $mist;
+
+  @include tablet {
+    grid-template-columns: 1fr;
+    padding: 6rem 2rem 2rem;
+  }
+}
+
+// ─── BACKGROUND ───────────────────────────────────────────────────────────────
+.bgGradient {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      ellipse 70% 70% at 80% 50%,
+      rgba(255, 214, 232, 0.6),
+      transparent
+    ),
+    radial-gradient(
+      ellipse 50% 80% at 10% 80%,
+      rgba(255, 224, 236, 0.8),
+      transparent
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+// ─── LEFT SIDE ────────────────────────────────────────────────────────────────
+.textSide {
+  position: relative;
+  z-index: 2;
+  animation: fadeUp 0.9s ease 0.2s both;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.badge {
+  display: inline-block;
+  background: linear-gradient(135deg, $sakura-200, $petal);
+  color: $deep;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 12px rgba(200, 60, 120, 0.15);
+}
+
+.name {
+  font-family: $font-playfair;
+  font-size: clamp(2.8rem, 5vw, 4.5rem);
+  line-height: 1.1;
+  color: $deep;
+  margin-bottom: 0.5rem;
+
+  em {
+    font-style: italic;
+    color: $sakura-500;
+  }
+}
+
+.title {
+  font-family: $font-noto;
+  font-weight: 300;
+  font-size: 1rem;
+  color: $sakura-600;
+  letter-spacing: 0.12em;
+  margin-bottom: 1.5rem;
+}
+
+.desc {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: $text-muted;
+  max-width: 440px;
+  margin-bottom: 2rem;
+}
+
+// ─── CTA BUTTONS ──────────────────────────────────────────────────────────────
+.cta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.btnPrimary {
+  background: linear-gradient(135deg, $sakura-400, $sakura-600);
+  color: $white;
+  padding: 0.75rem 2rem;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  box-shadow: 0 4px 20px rgba(200, 60, 120, 0.3);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(200, 60, 120, 0.4);
+  }
+}
+
+.btnOutline {
+  background: transparent;
+  color: $sakura-600;
+  padding: 0.75rem 2rem;
+  border-radius: 50px;
+  border: 1.5px solid $sakura-300;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: $sakura-50;
+    border-color: $sakura-400;
+  }
+}
+
+// ─── STATS ────────────────────────────────────────────────────────────────────
+.statsBar {
+  display: flex;
+  gap: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid $petal;
+
+  @include mobile {
+    gap: 1.5rem;
+  }
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.statNum {
+  font-family: $font-playfair;
+  font-size: 2.2rem;
+  color: $sakura-500;
+}
+
+.statLabel {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $text-light;
+}
+
+// ─── RIGHT SIDE ───────────────────────────────────────────────────────────────
+.visualSide {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  animation: fadeUp 0.9s ease 0.5s both;
+
+  @include tablet {
+    display: none;
+  }
+}
+
+.glowCircle {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, $petal, $sakura-200);
+  box-shadow: 0 20px 60px rgba(200, 60, 120, 0.25);
+  animation: float 5s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+.imageWrapper {
+  position: relative;
+  z-index: 3;
+  animation: float 5s ease-in-out infinite;
+  border-radius: 50%;
+  overflow: hidden;
+  width: 280px;
+  height: 280px;
+  border: 4px solid $sakura-200;
+  box-shadow:
+    0 0 0 8px rgba(255, 184, 212, 0.2),
+    0 20px 60px rgba(200, 60, 120, 0.3);
+}
+
+.chibImage {
+  object-fit: cover;
+  object-position: center top;
+  width: 280px !important;
+  height: 280px !important;
+  border-radius: 50%;
+}
+
+// ─── SKILL PILLS ──────────────────────────────────────────────────────────────
+.skillPill {
+  position: absolute;
+  background: $white;
+  border-radius: 50px;
+  padding: 0.3rem 0.85rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: $deep;
+  box-shadow: 0 4px 16px rgba(200, 60, 120, 0.15);
+  white-space: nowrap;
+  animation: float 4s ease-in-out infinite;
+
+  &[data-index="0"] {
+    top: 15%;
+    left: 0%;
+    animation-delay: 0s;
+  }
+  &[data-index="1"] {
+    top: 25%;
+    right: 0%;
+    animation-delay: 0.8s;
+  }
+  &[data-index="2"] {
+    bottom: 30%;
+    left: 0%;
+    animation-delay: 1.4s;
+  }
+  &[data-index="3"] {
+    bottom: 15%;
+    right: 0%;
+    animation-delay: 0.5s;
+  }
+  &[data-index="4"] {
+    top: 50%;
+    left: -5%;
+    animation-delay: 2s;
+  }
+}

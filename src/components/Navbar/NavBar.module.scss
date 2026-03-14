@@ -1,0 +1,125 @@
+@use '../../styles/variables' as *;
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 4rem;
+  transition: all 0.3s ease;
+
+  @include tablet {
+    padding: 1rem 1.5rem;
+  }
+}
+
+.scrolled {
+  @include glass;
+  padding: 1rem 4rem;
+
+  @include tablet {
+    padding: 1rem 1.5rem;
+  }
+}
+
+.logo {
+  font-family: $font-playfair;
+  font-size: 1.2rem;
+  color: $white;
+  letter-spacing: 0.04em;
+  transition: color 0.3s ease;
+
+  .scrolled & {
+    color: $deep;
+  }
+}
+
+.dot {
+  color: $sakura-400;
+}
+
+.links {
+  display: flex;
+  gap: 2rem;
+
+  @include tablet {
+    gap: 1rem;
+  }
+}
+
+.link {
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  position: relative;
+
+  // underline animation on hover
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: $sakura-400;
+    transition: width 0.3s ease;
+  }
+
+  &:hover {
+    color: $white;
+
+    &::after {
+      width: 100%;
+    }
+  }
+
+  .scrolled & {
+    color: $sakura-600;
+
+    &:hover {
+      color: $deep;
+    }
+  }
+}
+
+.resumeBtn {
+  background: transparent;
+  color: $white;
+  border: 1px solid rgba(249, 98, 159, 0.5);
+  border-radius: 50px;
+  padding: 0.5rem 1.4rem;
+  font-family: $font-dm;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(249, 98, 159, 0.15);
+    border-color: $sakura-400;
+    transform: translateY(-2px);
+  }
+
+  .scrolled & {
+    color: $sakura-600;
+    border-color: $sakura-300;
+
+    &:hover {
+      background: $sakura-50;
+    }
+  }
+
+  @include tablet {
+    display: none;
+  }
+}

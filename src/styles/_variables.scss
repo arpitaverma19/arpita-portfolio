@@ -1,0 +1,76 @@
+//---- COLOURS----------- 
+
+$sakura-50:  #fff0f5;
+$sakura-100: #ffe0ec;
+$sakura-200: #ffb8d4;
+$sakura-300: #ff8ab8;
+$sakura-400: #f9629f;
+$sakura-500: #e8447e;
+$sakura-600: #c93068;
+
+$deep:       #7a1f4a;
+$deep-dark:  #3d0a24;
+$ink:        #2d1a26;
+$blush:      #fde8f0;
+$petal:      #ffc8de;
+$mist:       #f9f0f4;
+$white:      #ffffff;
+
+$text-muted: #5a3a4a;
+$text-light: #8a5a6a;
+
+//---- FONTS----------- 
+
+$font-playfair: var(--font-playfair);
+$font-dm:       var(--font-dm-sans);
+$font-noto:     var(--font-noto);
+
+//---- BREAKPOINTS----------- 
+$mobile:  640px;
+$tablet:  900px;
+$desktop: 1200px;
+
+
+//---- MIXINS----------- 
+@mixin mobile {
+  @media (max-width: #{$mobile}) { @content; }
+}
+
+@mixin tablet {
+  @media (max-width: #{$tablet}) { @content; }
+}
+
+@mixin desktop {
+  @media (max-width: #{$desktop}) { @content; }
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin section-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: $sakura-400;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  &::before {
+    content: "";
+    display: inline-block;
+    width: 30px;
+    height: 1.5px;
+    background: $sakura-300;
+  }
+}
+
+@mixin glass {
+  background: rgba(255, 240, 245, 0.75);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 140, 190, 0.2);
+}

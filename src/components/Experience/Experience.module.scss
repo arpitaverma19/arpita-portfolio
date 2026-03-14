@@ -1,0 +1,158 @@
+@use "../../styles/variables" as *;
+
+// ─── SECTION ──────────────────────────────────────────────────────────────────
+.section {
+  position: relative;
+  height: 100vh;
+  background: $white;
+  display: flex;
+  flex-direction: column;
+  padding: 5rem 6rem;
+  overflow-y: auto;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @include tablet {
+    padding: 4rem 2rem;
+  }
+}
+
+// ─── HEADER ───────────────────────────────────────────────────────────────────
+.header {
+  margin-bottom: 3rem;
+  animation: fadeUp 0.9s ease 0.2s both;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sectionLabel {
+  @include section-label;
+  margin-bottom: 0.5rem;
+}
+
+.sectionTitle {
+  font-family: $font-playfair;
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  color: $deep;
+  line-height: 1.2;
+}
+
+// ─── TIMELINE ─────────────────────────────────────────────────────────────────
+.timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+
+  // vertical line
+  &::before {
+    content: "";
+    position: absolute;
+    left: 220px;
+    top: 0;
+    bottom: 0;
+    width: 1.5px;
+    background: linear-gradient(to bottom, $petal, transparent);
+
+    @include tablet {
+      display: none;
+    }
+  }
+}
+
+// ─── ITEM ─────────────────────────────────────────────────────────────────────
+.item {
+  display: grid;
+  grid-template-columns: 220px 24px 1fr;
+  gap: 0 1.5rem;
+  align-items: start;
+  animation: fadeUp 0.9s ease both;
+
+  @include tablet {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+}
+
+// ─── DATE SIDE ────────────────────────────────────────────────────────────────
+.dateSide {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-top: 0.3rem;
+
+  @include tablet {
+    align-items: flex-start;
+  }
+}
+
+.period {
+  font-size: 0.78rem;
+  color: $text-light;
+  letter-spacing: 0.05em;
+}
+
+.company {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: $sakura-500;
+  margin-top: 0.2rem;
+}
+
+// ─── DOT ──────────────────────────────────────────────────────────────────────
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: $sakura-400;
+  border: 2px solid $white;
+  box-shadow: 0 0 0 2px $sakura-200;
+  margin-top: 0.4rem;
+  justify-self: center;
+
+  @include tablet {
+    display: none;
+  }
+}
+
+// ─── CONTENT SIDE ─────────────────────────────────────────────────────────────
+.contentSide {
+  padding-bottom: 1rem;
+}
+
+.role {
+  font-family: $font-playfair;
+  font-size: 1.2rem;
+  color: $deep;
+  margin-bottom: 0.75rem;
+}
+
+.bullet {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: $text-muted;
+  padding-left: 1rem;
+  position: relative;
+  margin-bottom: 0.4rem;
+
+  &::before {
+    content: "✦";
+    position: absolute;
+    left: 0;
+    color: $sakura-300;
+    font-size: 0.6rem;
+    top: 0.35rem;
+  }
+}

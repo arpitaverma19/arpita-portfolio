@@ -1,0 +1,78 @@
+@use '../styles/variables' as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: $font-dm;
+  background: $mist;
+  color: $ink;
+  overflow-x: hidden;
+}
+
+// ─── HIDE SCROLLBAR BUT KEEP SCROLL ───
+body {
+  -ms-overflow-style: none;   // IE
+  scrollbar-width: none;       // Firefox
+}
+
+body::-webkit-scrollbar {
+  display: none;               // Chrome, Safari
+}
+
+// ─── SNAP SCROLL ───
+.snap-container {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.snap-section {
+  height: 100vh;
+  scroll-snap-align: start;
+  overflow: hidden;
+}
+
+// ─── REVEAL ANIMATION ───
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// ─── LINKS ───
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+// ─── IMAGES ───
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+// ─── LIST ───
+ul {
+  list-style: none;
+}
